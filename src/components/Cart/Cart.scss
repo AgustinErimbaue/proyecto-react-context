@@ -1,0 +1,13 @@
+.cart-icon {
+    img {
+      width: 40px;  // Ajusta el tamaño según sea necesario
+      height: auto;  // Mantiene la proporción de la imagen
+      cursor: pointer;
+      transition: transform 0.2s ease;
+  
+      &:hover {
+        transform: scale(1.1);  // Añade un pequeño efecto de zoom al pasar el ratón
+      }
+    }
+  }
+  
