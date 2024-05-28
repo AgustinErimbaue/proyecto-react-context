@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import { GlobalProvider } from "./Context/GlobalState";
+import { UserProvider } from "./Context/UserState/UserState";
 
 function App() {
   return (
@@ -14,14 +15,16 @@ function App() {
       <BrowserRouter>
         <Header />
         <GlobalProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Products" element={<Products />} />
-            <Route path="/Cart" element={<Cart />} />
-          </Routes>
+          <UserProvider>
+            <Routes>
+              <Route path="/Home" element={<Home />} />
+              <Route path="/" element={<Login />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/Register" element={<Register />} />
+              <Route path="/Products" element={<Products />} />
+              <Route path="/Cart" element={<Cart />} />
+            </Routes>
+          </UserProvider>
         </GlobalProvider>
       </BrowserRouter>
     </>
