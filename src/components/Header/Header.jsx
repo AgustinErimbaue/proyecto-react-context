@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import OIG4 from "../../assets/OIG4.jpg";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Badge } from "antd";
+import { UserContext } from "../../Context/UserState/UserState";
 
 const Header = () => {
+  const { token, logout } = useContext(UserContext);
   return (
     <div className="header-container">
       <div className="h1-header">
@@ -13,27 +16,34 @@ const Header = () => {
       </div>
       <div>
         <ul>
-          <li>
-            <Link to="/Home">Home</Link>
-          </li>
-          <li>
-            <Link to="/">Login</Link>
-          </li>
-          <li>
-            <Link to="/Profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/Register">Register</Link>
-          </li>
+          {token ? (
+            <>
+              <li>
+                <Link to="/Home">Home</Link>
+              </li>
+              <li>
+                <Link to="/Profile">Profile</Link>
+              </li>
 
-          <li>
-            <Link to="/Products">Products</Link>
-          </li>
-          <li className="cart-icon">
-            <Link to="/Cart">
-              <img src={OIG4} alt="Imagen de carrito" />
-            </Link>
-          </li>
+              <li>
+                <Link to="/Products">Products</Link>
+              </li>
+              <li className="cart-icon">
+                <Link to="/Cart">
+                  <Badge count={5} size="small">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </Link>
+              </li>
+              <li>
+                <button onClick={logout} className="logout-button">Logout</button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>

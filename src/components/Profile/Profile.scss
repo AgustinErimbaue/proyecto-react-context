@@ -1,0 +1,32 @@
+// profile.scss
+
+.profile-container {
+    max-width: 600px; // Ancho máximo del contenedor del perfil
+    margin: 0 auto; // Centrar el contenedor horizontalmente
+    padding: 20px; // Espaciado interno del contenedor
+    
+    h2 {
+      font-size: 24px; // Tamaño de fuente para el título del perfil
+      margin-bottom: 10px; // Espaciado inferior del título
+    }
+    
+    p {
+      margin-bottom: 8px; // Espaciado inferior de cada párrafo
+    }
+    
+    .profile-info {
+      border: 1px solid #ccc; // Borde alrededor del bloque de información del perfil
+      padding: 20px; // Espaciado interno del bloque de información
+      
+      // Estilos para cada línea de información del perfil
+      .profile-info-line {
+        font-size: 16px; // Tamaño de fuente para la información del perfil
+      }
+      
+      // Estilos específicos para la línea de ID
+      .profile-info-line.id {
+        font-weight: bold; // Hacer que el ID sea negrita
+      }
+    }
+  }
+  

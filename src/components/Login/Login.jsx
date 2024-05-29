@@ -2,12 +2,15 @@ import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../../Context/UserState/UserState";
 import { Form, Input, Button } from "antd";
-import "./Login.scss"
+import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login } = useContext(UserContext);
   const onFinish = (values) => {
     login(values);
+    navigate("/Profile")
   };
 
   const onFinishFailed = (errorInfo) => {
