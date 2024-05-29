@@ -1,7 +1,7 @@
-// Importar colores
+
 @import "../../colors.scss";
 
-// Variables
+
 $primary-color: $primary-blue;
 $error-color: $accent-red;
 $input-border-color: $neutral-medium-gray;
@@ -12,14 +12,12 @@ $container-padding: 20px;
 $container-border-radius: 8px;
 $form-item-margin-bottom: 16px;
 
-// Mixins
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-// Styles
 .container {
   @include flex-center;
   height: 100vh;

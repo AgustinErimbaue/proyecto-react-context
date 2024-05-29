@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge } from "antd";
 import { UserContext } from "../../Context/UserState/UserState";
 
 const Header = () => {
+  const navigate=useNavigate()
   const { token, logout } = useContext(UserContext);
+  const handleLogout = () => {
+    logout();
+    navigate("/"); 
+  };
+  
   return (
     <div className="header-container">
       <div className="h1-header">
@@ -36,7 +42,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <button onClick={logout} className="logout-button">Logout</button>
+                <button onClick={handleLogout} className="logout-button">Logout</button>
               </li>
             </>
           ) : (
