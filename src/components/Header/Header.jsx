@@ -34,15 +34,15 @@ const Header = () => {
               <li>
                 <Link to="/Products">Products</Link>
               </li>
+              <li>
+                <button onClick={handleLogout} className="logout-button">Logout</button>
+              </li>
               <li className="cart-icon">
                 <Link to="/Cart">
                   <Badge count={5} size="small">
-                    <ShoppingCartOutlined />
+                    <ShoppingCartOutlined style={{fontSize: '24px'}}/>
                   </Badge>
                 </Link>
-              </li>
-              <li>
-                <button onClick={handleLogout} className="logout-button">Logout</button>
               </li>
             </>
           ) : (

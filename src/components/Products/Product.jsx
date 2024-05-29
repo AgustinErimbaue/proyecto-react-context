@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Product.scss"
+import { GlobalContext } from "../../Context/GlobalState";
 const Product = ({infoProduct}) => {
+
   return (
     <div>
       <div className="product-card">
