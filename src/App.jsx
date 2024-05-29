@@ -13,9 +13,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
         <GlobalProvider>
           <UserProvider>
+        <Header />
             <Routes>
               <Route path="/Home" element={<Home />} />
               <Route path="/" element={<Login />} />
