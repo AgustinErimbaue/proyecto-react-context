@@ -3,23 +3,33 @@ import "./Cart.scss";
 import { GlobalContext } from "../../Context/GlobalState";
 
 const Cart = () => {
-  const { cart } = useContext(GlobalContext);
+  const { cart, clearCart } = useContext(GlobalContext);
+
   useEffect(() => {
-    localStorage.setItem("cart",cart)
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
   if (cart.length <= 0) {
     return <span>You don't have any added products</span>;
   }
-  const cartItem = cart.map((cartItem, index) => {
+
+  const cartItems = cart.map((cartItem, index) => {
     return (
-      <div className="cart" key={index}>
-        <span>{cartItem.name}</span>
-        <span>{cartItem.price} €</span>
-        {console.log(cartItem)}
+      <div className="cart-item" key={index}>
+        <div className="cart-item-name">{cartItem.name}</div>
+        <div className="cart-item-price">${cartItem.price}</div>
       </div>
     );
   });
-  return <div>{cartItem}</div>;
+
+  return (
+    <div>
+      <div className="cart-container">{cartItems}</div>
+      <button className="clear-cart-button" onClick={() => clearCart()}>
+        Clear cart
+      </button>
+    </div>
+  );
 };
 
 export default Cart;

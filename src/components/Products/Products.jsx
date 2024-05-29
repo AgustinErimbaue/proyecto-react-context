@@ -9,7 +9,8 @@ const Products = () => {
   useEffect(() => {
     getProducts();
   }, []);
-
+ 
+ 
   const productList = products.map((product, index) => (
     <div key={index} className="product-item">
       <Product infoProduct={product} />

@@ -1,17 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge } from "antd";
 import { UserContext } from "../../Context/UserState/UserState";
+import { GlobalContext } from "../../Context/GlobalState";
 
 const Header = () => {
   const navigate=useNavigate()
-  const { token, logout } = useContext(UserContext);
+  const { token, logout} = useContext(UserContext);
+  const{cart}=useContext(GlobalContext)
   const handleLogout = () => {
     logout();
     navigate("/"); 
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(cart);
+  }, [cart]);
+
   
   return (
     <div className="header-container">
@@ -39,7 +47,7 @@ const Header = () => {
               </li>
               <li className="cart-icon">
                 <Link to="/Cart">
-                  <Badge count={5} size="small">
+                  <Badge count={cart.length} size="small">
                     <ShoppingCartOutlined style={{fontSize: '24px'}}/>
                   </Badge>
                 </Link>
