@@ -7,20 +7,18 @@ import { UserContext } from "../../Context/UserState/UserState";
 import { GlobalContext } from "../../Context/GlobalState";
 
 const Header = () => {
-  const navigate=useNavigate()
-  const { token, logout} = useContext(UserContext);
-  const{cart}=useContext(GlobalContext)
+  const navigate = useNavigate();
+  const { token, logout } = useContext(UserContext);
+  const { cart } = useContext(GlobalContext);
   const handleLogout = () => {
     logout();
-    navigate("/"); 
+    navigate("/");
   };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(cart);
   }, [cart]);
 
-  
   return (
     <div className="header-container">
       <div className="h1-header">
@@ -43,12 +41,14 @@ const Header = () => {
                 <Link to="/Products">Products</Link>
               </li>
               <li>
-                <button onClick={handleLogout} className="logout-button">Logout</button>
+                <button onClick={handleLogout} className="logout-button">
+                  Logout
+                </button>
               </li>
               <li className="cart-icon">
                 <Link to="/Cart">
                   <Badge count={cart.length} size="small">
-                    <ShoppingCartOutlined style={{fontSize: '24px'}}/>
+                    <ShoppingCartOutlined style={{ fontSize: "24px" }} />
                   </Badge>
                 </Link>
               </li>

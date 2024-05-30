@@ -24,11 +24,10 @@
       font-size: 1.2em;
     }
   }
-
 }
 
 .clear-cart-button {
-  background-color:red;
+  background-color: red;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -40,6 +39,21 @@
     background-color: darkred;
   }
 }
+
+.create-order-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darkblue;
+  }
+}
+
 .cart-icon {
   img {
     width: 40px;
