@@ -26,43 +26,34 @@
   }
 }
 
-.clear-cart-button {
-  background-color: red;
-  color: white;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-cart-button,
+.create-order-button {
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
 
-  &:hover {
-    background-color: darkred;
-  }
+.clear-cart-button {
+  background-color: red;
+  color: white;
+}
+
+.clear-cart-button:hover {
+  background-color: darkred;
 }
 
 .create-order-button {
   background-color: blue;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: darkblue;
-  }
 }
 
-.cart-icon {
-  img {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
+.create-order-button:hover {
+  background-color: darkblue;
 }
