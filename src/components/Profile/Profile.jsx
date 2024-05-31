@@ -4,16 +4,18 @@ import "./Profile.scss";
 import { Spin } from "antd";
 
 const Profile = () => {
-  const { getUserInfo, user,token } = useContext(UserContext);
+  const { getUserInfo, user, token } = useContext(UserContext);
 
   useEffect(() => {
     getUserInfo();
   }, [token]);
 
+ 
   if (!user) {
     return <Spin size="large" />;
   }
   return (
+    
     <div className="profile-container">
       <h2>Profile</h2>
       <div className="profile-info">
@@ -22,7 +24,7 @@ const Profile = () => {
         <p className="profile-info-line">Email: {user.email}</p>
       </div>
     </div>
-  )
+  );
 };
 
 export default Profile;
