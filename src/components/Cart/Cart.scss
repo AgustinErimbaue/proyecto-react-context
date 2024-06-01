@@ -1,3 +1,5 @@
+@import "../../colors.scss";
+
 .cart-container {
   display: flex;
   flex-direction: column;
@@ -9,17 +11,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid $neutral-medium-gray;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: $neutral-white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     .cart-item-name {
       font-size: 1.2em;
+      color: $primary-dark-gray;
     }
 
     .cart-item-price {
-      color: green;
+      color: $secondary-green;
       font-weight: bold;
       font-size: 1.2em;
     }
@@ -29,31 +32,31 @@
 .buttons {
   display: flex;
   justify-content: space-between;
-}
 
-.clear-cart-button,
-.create-order-button {
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .clear-cart-button,
+  .create-order-button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.clear-cart-button {
-  background-color: red;
-  color: white;
-}
+  .clear-cart-button {
+    background-color: $accent-red;
+    color: $neutral-white;
 
-.clear-cart-button:hover {
-  background-color: darkred;
-}
+    &:hover {
+      background-color: darken($accent-red, 10%);
+    }
+  }
 
-.create-order-button {
-  background-color: blue;
-  color: white;
-}
+  .create-order-button {
+    background-color: $primary-blue;
+    color: $neutral-white;
 
-.create-order-button:hover {
-  background-color: darkblue;
+    &:hover {
+      background-color: darken($primary-blue, 10%);
+    }
+  }
 }
