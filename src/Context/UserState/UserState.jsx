@@ -1,7 +1,7 @@
 import axios from "axios";
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import UserReducer from "./UserReducer";
-import { message } from "antd";
+import { GlobalContext } from "../GlobalState";
 const token = localStorage.getItem("token") || "";
 
 const initialState = {
@@ -14,20 +14,19 @@ const API_URL = "http://localhost:3000/users";
 export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
+  const { clearCart } = useContext(GlobalContext);
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const register = async (user) => {
     try {
+      console.log("User data to register:", user);
 
-      console.log('User data to register:', user);
-      
-      const res = await axios.post(API_URL + '/register', user);
-      console.log('User created:', res.data);
+      const res = await axios.post(API_URL + "/register", user);
+      console.log("User created:", res.data);
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error("Error creating user:", error);
     }
   };
-
 
   const login = async (user) => {
     try {
@@ -40,6 +39,7 @@ export const UserProvider = ({ children }) => {
       if (res.data) {
         localStorage.setItem("token", res.data.token);
       }
+      clearCart();
     } catch (error) {
       console.error(error);
     }
@@ -65,6 +65,7 @@ export const UserProvider = ({ children }) => {
   const logout = async () => {
     try {
       const token = localStorage.getItem("token");
+      localStorage.clear("token");
       const res = await axios.post(
         API_URL + "/logout",
         {},
@@ -80,6 +81,7 @@ export const UserProvider = ({ children }) => {
           type: "LOGOUT",
         });
       }
+      clearCart();
     } catch (error) {
       console.error(error);
     }
@@ -93,7 +95,7 @@ export const UserProvider = ({ children }) => {
         login,
         getUserInfo,
         logout,
-        register
+        register,
       }}
     >
       {children}

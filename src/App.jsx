@@ -8,6 +8,7 @@ import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import { GlobalProvider } from "./Context/GlobalState";
 import { UserProvider } from "./Context/UserState/UserState";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             </Routes>
           </UserProvider>
         </GlobalProvider>
+        <Footer/>
       </BrowserRouter>
     </>
   );

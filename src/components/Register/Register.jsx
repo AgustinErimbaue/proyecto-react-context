@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserState/UserState";
 import { useNavigate } from "react-router-dom";
-import "./Register.scss"
+import "./Register.scss";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -12,13 +12,29 @@ const Register = () => {
     email: "",
     password: "",
   });
-
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [message, setMessage] = useState("");
+  
   const handleOnChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
+  const validateForm = () => {
+    if (!formData.name || !formData.email || !formData.password) {
+      setMessage("All fields are required.");
+      setBtnDisabled(true);
+    } else {
+      setMessage("");
+      setBtnDisabled(false);
+    }
+  };
+
+  useEffect(() => {
+    validateForm();
+  }, [formData]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +55,7 @@ const Register = () => {
           value={formData.name}
           onChange={handleOnChange}
           className="text"
-          placeholder="name"
+          placeholder="Name"
         />
         <input
           type="email"
@@ -58,8 +74,11 @@ const Register = () => {
           placeholder="Password"
         />
       </div>
+      {message && <p className="error">{message}</p>}
       <div className="button-form">
-        <button type="submit">Sign up</button>
+        <button type="submit" disabled={btnDisabled}>
+          Sign up
+        </button>
       </div>
     </form>
   );

@@ -1,0 +1,62 @@
+@import '../../colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.footer {
+  background-color: $neutral-light-gray;
+  padding: 20px 0;
+  color: $primary-blue;
+  font-family: "Roboto", sans-serif;
+
+  .footer__container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .footer__section {
+      flex: 1;
+
+      h3 {
+        color: $primary-blue;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            color: $primary-dark-gray;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: $primary-blue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer__legal {
+    text-align: center;
+    margin-top: 20px;
+
+    p {
+      margin: 0;
+
+      a {
+        color: $primary-dark-gray;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+}

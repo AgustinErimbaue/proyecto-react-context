@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { token, logout } = useContext;
   const { cart, clearCart } = useContext(GlobalContext);
   const [showAlert, setShowAlert] = useState(false);
-
+  const [totalAmount, setTotalAmount] = useState(0);
+  
   const handleCreateOrder = () => {
     orderService.createOrder(cart);
     setShowAlert(true);
@@ -22,6 +22,12 @@ const Cart = () => {
   };
 
   useEffect(() => {
+    const calculateTotal = () => {
+      const total = cart.reduce((acc, curr) => acc + parseFloat(curr.price), 0);
+      setTotalAmount(total);
+    };
+
+    calculateTotal();
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -58,6 +64,7 @@ const Cart = () => {
           />
         )}
       </Space>
+      <div className="total-amount">Total :${totalAmount}</div>
     </div>
   );
 };
