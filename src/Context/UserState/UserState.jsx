@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createContext, useReducer } from "react";
 import UserReducer from "./UserReducer";
-
-
+import { message } from "antd";
 const token = localStorage.getItem("token") || "";
 
 const initialState = {
@@ -16,6 +15,19 @@ export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
+
+  const register = async (user) => {
+    try {
+
+      console.log('User data to register:', user);
+      
+      const res = await axios.post(API_URL + '/register', user);
+      console.log('User created:', res.data);
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
+  };
+
 
   const login = async (user) => {
     try {
@@ -81,6 +93,7 @@ export const UserProvider = ({ children }) => {
         login,
         getUserInfo,
         logout,
+        register
       }}
     >
       {children}
